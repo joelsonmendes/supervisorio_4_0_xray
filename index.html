@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supervisório Industrial 4.0 | X-Ray Holographic</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene3d"></canvas>
+
+    <header class="topbar glass">
+      <div>
+        <span class="eyebrow">SENAI HUB • INDÚSTRIA 4.0 • IoT • LoRaWAN</span>
+        <h1>Supervisório 4.0 — Bombas e Reservatórios</h1>
+      </div>
+      <div class="system-status">
+        <span class="pulse"></span>
+        <strong id="connectionStatus">Gateway Online</strong>
+      </div>
+    </header>
+
+    <aside class="left-panel glass">
+      <h2>Processo</h2>
+      <div class="metric critical" id="levelCard">
+        <span>Nível do Reservatório</span>
+        <strong><b id="tankLevel">74</b>%</strong>
+        <small>Sensor ultrassônico ESP32</small>
+      </div>
+      <div class="metric">
+        <span>Vazão</span>
+        <strong><b id="flowRate">38.4</b> m³/h</strong>
+        <small>Fluxo estimado em tempo real</small>
+      </div>
+      <div class="metric">
+        <span>Pressão</span>
+        <strong><b id="pressure">4.2</b> bar</strong>
+        <small>Linha de recalque</small>
+      </div>
+      <div class="metric">
+        <span>Temperatura do Motor</span>
+        <strong><b id="temperature">48</b> °C</strong>
+        <small>Proteção térmica ativa</small>
+      </div>
+    </aside>
+
+    <aside class="right-panel glass">
+      <h2>Elétrica e IoT</h2>
+      <div class="status-grid">
+        <div><span>Bomba</span><strong id="pumpStatus">Ligada</strong></div>
+        <div><span>Inversor</span><strong id="driveStatus">Normal</strong></div>
+        <div><span>Tensão</span><strong><b id="voltage">380</b> V</strong></div>
+        <div><span>Corrente</span><strong><b id="current">12.8</b> A</strong></div>
+        <div><span>Potência</span><strong><b id="power">7.6</b> kW</strong></div>
+        <div><span>RSSI</span><strong><b id="rssi">-82</b> dBm</strong></div>
+        <div><span>SNR</span><strong><b id="snr">8.7</b> dB</strong></div>
+        <div><span>Pacotes</span><strong id="packets">1452</strong></div>
+      </div>
+
+      <div class="actions">
+        <button id="togglePump">Desligar Bomba</button>
+        <button id="alarmTest">Teste de Alarme</button>
+      </div>
+    </aside>
+
+    <section class="bottom-panel glass">
+      <div class="chart-box">
+        <h3>Histórico de Nível</h3>
+        <canvas id="levelChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Corrente do Motor</h3>
+        <canvas id="currentChart"></canvas>
+      </div>
+      <div class="alarm-box">
+        <h3>Alarmes</h3>
+        <ul id="alarmList">
+          <li class="ok">Sistema operando em condição normal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      SENAI HUB Inovação e Tecnologia | Desenvolvido por Joelson M. Mendes — Energia, IoT e Automação
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
